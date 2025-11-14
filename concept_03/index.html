@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>바이브 코딩 - 코딩의 즐거움을 발견하세요</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- Custom CSS -->
+    <style>
+        /* General styles inspired by space737.kr's clean and modern design */
+        body {
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Modern sans-serif font */
+            line-height: 1.7;
+            color: #333; /* Dark grey for text */
+            background-color: #f8f9fa; /* Light background */
+        }
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.95) !important; /* Slightly transparent white/off-white, sticky */
+            box-shadow: 0 2px 5px rgba(0,0,0,.1);
+            padding: 0.8rem 0;
+        }
+        .navbar .navbar-brand {
+            font-weight: 700;
+            color: #6f42c1 !important; /* Purple accent */
+            font-size: 1.8rem;
+            letter-spacing: -1px;
+        }
+        .navbar .nav-link {
+            color: #555 !important; /* Darker text for nav links */
+            padding: 0.5rem 1.2rem;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+        }
+        .navbar .nav-link:hover {
+            color: #6f42c1 !important; /* Purple accent on hover */
+        }
+        .navbar .nav-link.active {
+            font-weight: 500;
+            color: #6f42c1 !important;
+        }
+
+        /* Hero Section - Engaging and modern */
+        .hero-section {
+            background-image: url('https://via.placeholder.com/1920x1080/8A2BE2/FFFFFF?text=Code+Your+Future'); /* Placeholder coding image */
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            color: white;
+            padding: 180px 0; /* Generous vertical padding */
+            text-align: center;
+            margin-bottom: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .hero-section::before { /* Overlay for better text readability */
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5); /* Dark overlay */
+            z-index: 1;
+        }
+        .hero-section .container {
+            position: relative;
+            z-index: 2;
+        }
+        .hero-section h1 {
+            font-size: 4rem; /* Larger hero title */
+            font-weight: 700;
+            margin-bottom: 25px;
+            line-height: 1.2;
+            letter-spacing: -1.5px;
+        }
+        .hero-section .lead {
+            font-size: 1.6rem;
+            margin-bottom: 40px;
+            opacity: 0.95;
+        }
+        .hero-section .btn-primary {
+            background-color: #6f42c1; /* Purple */
+            border-color: #6f42c1;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border-radius: 30px; /* Rounded button */
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+        .hero-section .btn-primary:hover {
+            background-color: #5a32a3;
+            border-color: #5a32a3;
+        }
+
+        /* Section Styling - clean, ample spacing */
+        .section {
+            padding: 80px 0; /* Increased padding for sections */
+            position: relative;
+        }
+        .section-heading {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 40px;
+            text-align: center;
+            color: #333;
+        }
+        .section-subheading {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #6c757d;
+            margin-bottom: 60px;
+        }
+        .bg-light-custom { /* Customized light background for specific sections */
+            background-color: #f0f8ff !important; /* AliceBlue */
+        }
+
+        /* Vibe Pillars Section - Icon/Image and Text layout */
+        .vibe-pillar {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .vibe-pillar .pillar-icon {
+            font-size: 3rem;
+            color: #6f42c1; /* Purple */
+            margin-bottom: 20px;
+        }
+        .vibe-pillar h4 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #6f42c1;
+        }
+        .vibe-pillar p {
+            font-size: 1rem;
+            color: #555;
+        }
+
+        /* Courses Section - Card styling */
+        .course-card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0,0,0,.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow: hidden; /* Ensure content stays within rounded corners */
+        }
+        .course-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0,0,0,.15);
+        }
+        .course-card .card-img-top {
+            height: 220px; /* Fixed image height */
+            object-fit: cover; /* Ensure image covers the area */
+        }
+        .course-card .card-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #6f42c1; /* Purple */
+        }
+        .course-card .card-text {
+            font-size: 1rem;
+            color: #555;
+            margin-bottom: 25px;
+        }
+        .course-card .card-body {
+            padding: 30px;
+        }
+        .course-card .btn-outline-primary {
+            border-radius: 25px;
+            padding: 10px 20px;
+            font-weight: 500;
+            border-width: 2px;
+        }
+
+        /* Community Section - Card styling */
+        .community-card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0,0,0,.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+            padding: 30px 20px;
+            background-color: #ffffff;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .community-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0,0,0,.15);
+        }
+        .community-card .card-icon {
+            font-size: 2.5rem;
+            color: #6f42c1; /* Purple */
+            margin-bottom: 15px;
+        }
+        .community-card h5 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #6f42c1;
+        }
+        .community-card p {
+            font-size: 0.95rem;
+            color: #555;
+        }
+        .community-card .btn-outline-primary {
+            border-radius: 25px;
+            padding: 10px 20px;
+            font-weight: 500;
+            border-width: 2px;
+        }
+
+        /* Contact Us Section - Form styling */
+        #contact form label.form-label {
+            font-weight: 500;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        #contact input.form-control,
+        #contact textarea.form-control {
+            border-radius: 10px;
+            padding: 15px;
+            border: 1px solid #d0c0e0; /* Light purple border */
+            background-color: #ffffff;
+        }
+        #contact input.form-control:focus,
+        #contact textarea.form-control:focus {
+            border-color: #6f42c1; /* Purple focus */
+            box-shadow: 0 0 0 0.25rem rgba(111, 66, 193, .25); /* Purple shadow */
+        }
+        #contact .btn-primary {
+            background-color: #6f42c1; /* Purple */
+            border-color: #6f42c1;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            border-radius: 30px;
+            font-weight: 600;
+        }
+         #contact .btn-primary:hover {
+            background-color: #5a32a3;
+            border-color: #5a32a3;
+        }
+        #contact .map-container {
+            margin-top: 40px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0,0,0,.1);
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #303030; /* Dark footer */
+            color: #e0e0e0; /* Light grey text */
+            padding: 60px 0;
+            margin-top: 80px;
+            font-size: 0.95rem;
+        }
+        .footer h5 {
+            color: white;
+            font-weight: 700;
+            margin-bottom: 25px;
+            font-size: 1.4rem;
+        }
+        .footer p, .footer li {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+        .footer a {
+            color: #6f42c1; /* Purple link */
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .footer a:hover {
+            color: #a080d0; /* Lighter purple on hover */
+        }
+        .footer-divider {
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+            margin: 40px 0;
+        }
+        .footer-text {
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#home">바이브 코딩</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#home">홈</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">플랫폼 소개</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#courses">강좌</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#community">커뮤니티</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#resources">리소스</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">문의</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="container">
+            <h1>코딩의 즐거움을 발견하고 성장하세요</h1>
+            <p class="lead">최신 기술 트렌드를 배우고, 함께 코딩하며 당신의 아이디어를 현실로 만드세요.</p>
+            <a href="#courses" class="btn btn-primary">강좌 둘러보기</a>
+        </div>
+    </section>
+
+    <!-- About Platform Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-heading">바이브 코딩이란?</h2>
+            <p class="section-subheading">코딩 학습과 성장을 위한 당신의 완벽한 파트너</p>
+            <div class="row align-items-center">
+                <div class="col-md-6 mb-4">
+                    <img src="https://via.placeholder.com/500x400/8A2BE2/FFFFFF?text=Coding+Community" class="img-fluid rounded-4 shadow-lg" alt="바이브 코딩 커뮤니티">
+                </div>
+                <div class="col-md-6 mb-4">
+                    <p style="font-size: 1.1rem; margin-bottom: 20px;">바이브 코딩은 단순한 코딩 교육 플랫폼을 넘어섭니다. 우리는 코딩을 배우는 모든 과정이 즐겁고 영감을 줄 수 있어야 한다고 믿습니다. 최신 기술 트렌드를 반영한 실무 중심의 강좌와 활발한 커뮤니티를 통해 당신의 코딩 여정을 지원합니다.</p>
+                    <p style="font-size: 1.1rem; margin-bottom: 20px;">초보자부터 숙련된 개발자까지, 모두가 함께 배우고 성장할 수 있는 공간을 제공합니다.</p>
+                    <a href="#courses" class="btn btn-outline-primary">학습 로드맵 보기</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vibe Pillars Section -->
+    <section id="pillars" class="section bg-light-custom">
+        <div class="container">
+            <h2 class="section-heading">바이브 코딩의 핵심 가치</h2>
+            <p class="section-subheading">우리가 추구하는 코딩 문화</p>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="vibe-pillar">
+                        <i class="bi bi-code-slash pillar-icon"></i>
+                        <h4>실무 중심 학습</h4>
+                        <p>이론뿐만 아니라 실제 프로젝트 경험을 통해 즉시 활용 가능한 기술을 익힙니다.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="vibe-pillar">
+                        <i class="bi bi-people-fill pillar-icon"></i>
+                        <h4>활발한 커뮤니티</h4>
+                        <p>동료 학습자, 멘토와 교류하며 함께 성장하고 지식을 공유합니다.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="vibe-pillar">
+                        <i class="bi bi-lightbulb-fill pillar-icon"></i>
+                        <h4>지속적인 성장</h4>
+                        <p>최신 기술 트렌드를 반영한 콘텐츠와 꾸준한 학습 기회를 제공합니다.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section id="courses" class="section">
+        <div class="container">
+            <h2 class="section-heading">인기 강좌</h2>
+            <p class="section-subheading">당신의 코딩 실력을 한 단계 업그레이드하세요.</p>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="course-card">
+                        <img src="https://via.placeholder.com/400x250/8A2BE2/FFFFFF?text=Web+Dev" class="card-img-top" alt="웹 개발 강좌">
+                        <div class="card-body">
+                            <h5 class="card-title">프론트엔드 웹 개발 마스터</h5>
+                            <p class="card-text">HTML, CSS, JavaScript부터 React까지, 매력적인 웹사이트를 만드는 방법을 배웁니다.</p>
+                            <a href="#" class="btn btn-outline-primary mt-auto">자세히 보기</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="course-card">
+                        <img src="https://via.placeholder.com/400x250/4682B4/FFFFFF?text=Data+Science" class="card-img-top" alt="데이터 과학 강좌">
+                        <div class="card-body">
+                            <h5 class="card-title">파이썬으로 배우는 데이터 과학</h5>
+                            <p class="card-text">데이터 분석, 머신러닝 기초를 파이썬 라이브러리와 함께 실습합니다.</p>
+                            <a href="#" class="btn btn-outline-primary mt-auto">자세히 보기</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="course-card">
+                        <img src="https://via.placeholder.com/400x250/32CD32/FFFFFF?text=Mobile+Dev" class="card-img-top" alt="모바일 개발 강좌">
+                        <div class="card-body">
+                            <h5 class="card-title">React Native 모바일 앱 개발</h5>
+                            <p class="card-text">하나의 코드로 iOS와 Android 앱을 동시에 개발하는 방법을 익힙니다.</p>
+                            <a href="#" class="btn btn-outline-primary mt-auto">자세히 보기</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community Section -->
+    <section id="community" class="section bg-light-custom">
+        <div class="container">
+            <h2 class="section-heading">함께 성장하는 커뮤니티</h2>
+            <p class="section-subheading">질문하고, 공유하고, 협업하며 코딩 실력을 향상시키세요.</p>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="community-card">
+                        <i class="bi bi-chat-dots-fill card-icon"></i>
+                        <h5>질문 & 답변</h5>
+                        <p>궁금한 점을 질문하고, 다른 개발자들의 답변을 통해 문제를 해결하세요.</p>
+                        <a href="#" class="btn btn-outline-primary mt-auto">커뮤니티 바로가기</a>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="community-card">
+                        <i class="bi bi-people-fill card-icon"></i>
+                        <h5>스터디 그룹</h5>
+                        <p>함께 공부할 스터디 그룹을 찾거나 직접 만들어보세요.</p>
+                        <a href="#" class="btn btn-outline-primary mt-auto">그룹 찾기</a>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="community-card">
+                        <i class="bi bi-github card-icon"></i>
+                        <h5>프로젝트 공유</h5>
+                        <p>당신의 멋진 프로젝트를 공유하고 피드백을 받아보세요.</p>
+                        <a href="#" class="btn btn-outline-primary mt-auto">프로젝트 공유</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Us Section -->
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 class="section-heading">문의하기</h2>
+            <p class="section-subheading">바이브 코딩에 대해 궁금한 점이 있으신가요?</p>
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <form>
+                        <div class="mb-4">
+                            <label for="name" class="form-label">이름</label>
+                            <input type="text" class="form-control" id="name" placeholder="이름을 입력하세요">
+                        </div>
+                        <div class="mb-4">
+                            <label for="email" class="form-label">이메일</label>
+                            <input type="email" class="form-control" id="email" placeholder="example@domain.com">
+                        </div>
+                        <div class="mb-4">
+                            <label for="message" class="form-label">문의 내용</label>
+                            <textarea class="form-control" id="message" rows="6" placeholder="문의 내용을 입력하세요"></textarea>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary">메시지 보내기</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="row justify-content-center mt-5">
+                <div class="col-md-8 text-center">
+                    <p class="mb-2"><strong>주소:</strong> 서울시 강남구 코딩로 123, 4층</p>
+                    <p class="mb-2"><strong>전화:</strong> 02-5555-1212</p>
+                    <p class="mb-2"><strong>이메일:</strong> <a href="mailto:support@vibe-coding.com">support@vibe-coding.com</a></p>
+                </div>
+            </div>
+            <div class="row justify-content-center mt-4">
+                <div class="col-md-8 map-container">
+                    <!-- Placeholder for Google Maps -->
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3164.287011799999!2d127.0377441157907!3d37.50793007979477!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x307776293311233b%3A0x1234567890abcdef!5e0!3m2!1sen!2sus!4v1678886400000!5m2!1sen!2sus" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h5 class="footer-heading">바이브 코딩</h5>
+                    <p class="footer-text">코딩의 즐거움을 나누고 함께 성장하는 커뮤니티.</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5 class="footer-heading">주요 메뉴</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#home">홈</a></li>
+                        <li><a href="#about">플랫폼 소개</a></li>
+                        <li><a href="#courses">강좌</a></li>
+                        <li><a href="#community">커뮤니티</a></li>
+                        <li><a href="#resources">리소스</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5 class="footer-heading">연락처</h5>
+                    <p class="footer-text">이메일: <a href="mailto:support@vibe-coding.com">support@vibe-coding.com</a></p>
+                    <p class="footer-text">전화: 02-5555-1212</p>
+                    <p class="footer-text">주소: 서울시 강남구 코딩로 123, 4층</p>
+                </div>
+            </div>
+            <hr class="footer-divider">
+            <p class="text-center">&copy; 2025 바이브 코딩. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS Bundle (includes Popper) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <!-- Bootstrap Icons (for pillar and card icons) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+</body>
+</html>

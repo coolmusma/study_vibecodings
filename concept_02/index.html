@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>지속가능한 미래를 위한 약속 - [기업명]</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- Custom CSS -->
+    <style>
+        /* General styles inspired by space737.kr's clean and professional design */
+        body {
+            font-family: 'Noto Sans KR', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Clean, modern Korean font */
+            line-height: 1.7;
+            color: #333; /* Dark grey for text */
+            background-color: #f8f9fa; /* Light, natural background */
+        }
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.95) !important; /* Slightly transparent white/off-white, sticky */
+            box-shadow: 0 2px 5px rgba(0,0,0,.1);
+            padding: 0.8rem 0;
+        }
+        .navbar .navbar-brand {
+            font-weight: 700;
+            color: #006400 !important; /* DarkGreen accent */
+            font-size: 1.8rem;
+        }
+        .navbar .nav-link {
+            color: #555 !important; /* Darker text for nav links */
+            padding: 0.5rem 1.2rem;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+        }
+        .navbar .nav-link:hover {
+            color: #006400 !important; /* DarkGreen accent on hover */
+        }
+        .navbar .nav-link.active {
+            font-weight: 500;
+            color: #006400 !important;
+        }
+
+        /* Hero Section - Emphasizing ESG mission */
+        .hero-section {
+            background-image: url('https://via.placeholder.com/1920x1080/2E8B57/FFFFFF?text=Sustainable+Future+Commitment'); /* Placeholder ESG-themed image */
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            color: white;
+            padding: 180px 0; /* Generous vertical padding */
+            text-align: center;
+            margin-bottom: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .hero-section::before { /* Overlay for better text readability */
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5); /* Dark overlay */
+            z-index: 1;
+        }
+        .hero-section .container {
+            position: relative;
+            z-index: 2;
+        }
+        .hero-section h1 {
+            font-size: 3.8rem; /* Larger hero title */
+            font-weight: 700;
+            margin-bottom: 25px;
+            line-height: 1.2;
+            letter-spacing: -1px;
+        }
+        .hero-section .lead {
+            font-size: 1.5rem;
+            margin-bottom: 40px;
+            opacity: 0.95;
+        }
+        .hero-section .btn-primary {
+            background-color: #006400; /* DarkGreen */
+            border-color: #006400;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border-radius: 30px; /* Rounded button */
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+        .hero-section .btn-primary:hover {
+            background-color: #004d00;
+            border-color: #004d00;
+        }
+
+        /* Section Styling - clean, ample spacing */
+        .section {
+            padding: 80px 0; /* Increased padding for sections */
+            position: relative;
+        }
+        .section-heading {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 40px;
+            text-align: center;
+            color: #333;
+        }
+        .section-subheading {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #6c757d;
+            margin-bottom: 60px;
+        }
+        .bg-light-custom { /* Customized light background for specific sections */
+            background-color: #e0f0e0 !important; /* Light Greenish-grey */
+        }
+
+        /* ESG Pillars Section - Icon/Image and Text layout */
+        .esg-pillar {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .esg-pillar .pillar-icon {
+            font-size: 3rem;
+            color: #006400; /* DarkGreen */
+            margin-bottom: 20px;
+        }
+        .esg-pillar h4 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #006400;
+        }
+        .esg-pillar p {
+            font-size: 1rem;
+            color: #555;
+        }
+
+        /* Reports Section - Card styling */
+        .report-card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0,0,0,.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+            padding: 30px 20px;
+            background-color: #ffffff;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .report-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0,0,0,.15);
+        }
+        .report-card .card-icon {
+            font-size: 2.5rem;
+            color: #006400; /* DarkGreen */
+            margin-bottom: 15px;
+        }
+        .report-card h5 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #006400;
+        }
+        .report-card p {
+            font-size: 0.95rem;
+            color: #555;
+        }
+        .report-card .btn-outline-primary {
+            border-radius: 25px;
+            padding: 10px 20px;
+            font-weight: 500;
+            border-width: 2px;
+        }
+
+        /* Contact Us Section - Form styling */
+        #contact form label.form-label {
+            font-weight: 500;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        #contact input.form-control,
+        #contact textarea.form-control {
+            border-radius: 10px;
+            padding: 15px;
+            border: 1px solid #c0d0c0; /* Light green border */
+            background-color: #ffffff;
+        }
+        #contact input.form-control:focus,
+        #contact textarea.form-control:focus {
+            border-color: #006400; /* DarkGreen focus */
+            box-shadow: 0 0 0 0.25rem rgba(0, 100, 0, .25); /* DarkGreen shadow */
+        }
+        #contact .btn-primary {
+            background-color: #006400; /* DarkGreen */
+            border-color: #006400;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            border-radius: 30px;
+            font-weight: 600;
+        }
+         #contact .btn-primary:hover {
+            background-color: #004d00;
+            border-color: #004d00;
+        }
+        #contact .map-container {
+            margin-top: 40px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0,0,0,.1);
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #006400; /* DarkGreen footer */
+            color: #e0f0e0; /* Light green text */
+            padding: 60px 0;
+            margin-top: 80px;
+            font-size: 0.95rem;
+        }
+        .footer h5 {
+            color: white;
+            font-weight: 700;
+            margin-bottom: 25px;
+            font-size: 1.4rem;
+        }
+        .footer p, .footer li {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+        .footer a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .footer a:hover {
+            color: #90EE90; /* LightGreen on hover */
+        }
+        .footer-divider {
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+            margin: 40px 0;
+        }
+        .footer-text {
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#home">[기업명] ESG</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#home">홈</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#commitment">ESG 약속</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#pillars">ESG 활동</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#reports">보고서</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#news">뉴스</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">문의</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="container">
+            <h1>지속가능한 미래를 향한 우리의 약속</h1>
+            <p class="lead">환경, 사회, 지배구조(ESG) 경영을 통해 더 나은 세상을 만들어갑니다.</p>
+            <a href="#pillars" class="btn btn-primary">ESG 활동 알아보기</a>
+        </div>
+    </section>
+
+    <!-- ESG Commitment Section -->
+    <section id="commitment" class="section">
+        <div class="container">
+            <h2 class="section-heading">우리의 ESG 약속</h2>
+            <p class="section-subheading">기업의 성장과 사회적 책임을 조화롭게 실현합니다.</p>
+            <div class="row align-items-center">
+                <div class="col-md-6 mb-4">
+                    <img src="https://via.placeholder.com/500x400/90EE90/FFFFFF?text=ESG+Vision" class="img-fluid rounded-4 shadow-lg" alt="ESG 비전">
+                </div>
+                <div class="col-md-6 mb-4">
+                    <p style="font-size: 1.1rem; margin-bottom: 20px;">[기업명]은 기업의 경제적 성과뿐만 아니라, 환경 보호, 사회적 책임 이행, 투명한 지배구조 확립을 통해 지속가능한 발전에 기여하는 것을 최우선 가치로 삼고 있습니다. 우리는 모든 경영 활동에서 ESG 원칙을 준수하며, 이해관계자들과 함께 성장하는 미래를 만들어가고자 합니다.</p>
+                    <a href="#" class="btn btn-outline-primary">ESG 경영 전략 보기</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ESG Pillars Section -->
+    <section id="pillars" class="section bg-light-custom">
+        <div class="container">
+            <h2 class="section-heading">ESG 핵심 활동</h2>
+            <p class="section-subheading">환경, 사회, 지배구조 각 분야에서의 우리의 노력</p>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="esg-pillar">
+                        <i class="bi bi-tree-fill pillar-icon"></i> <!-- Bootstrap Icons (requires separate CDN or local file) -->
+                        <h4>환경 (Environmental)</h4>
+                        <p>탄소 배출량 감축, 신재생 에너지 전환, 친환경 제품 개발 등 지구를 위한 실천을 이어갑니다.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="esg-pillar">
+                        <i class="bi bi-people-fill pillar-icon"></i>
+                        <h4>사회 (Social)</h4>
+                        <p>임직원의 성장 지원, 지역사회 공헌, 다양성 존중 등 따뜻한 공동체를 만들어갑니다.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="esg-pillar">
+                        <i class="bi bi-shield-fill pillar-icon"></i>
+                        <h4>지배구조 (Governance)</h4>
+                        <p>투명하고 윤리적인 경영, 이사회 중심의 의사결정으로 신뢰받는 기업이 되겠습니다.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reports Section -->
+    <section id="reports" class="section">
+        <div class="container">
+            <h2 class="section-heading">지속가능경영 보고서</h2>
+            <p class="section-subheading">우리의 ESG 성과와 계획을 투명하게 공개합니다.</p>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="report-card">
+                        <i class="bi bi-file-earmark-bar-chart-fill card-icon"></i>
+                        <h5>2023년 ESG 보고서</h5>
+                        <p>지난 한 해 동안의 환경, 사회, 지배구조 성과를 담았습니다.</p>
+                        <a href="#" class="btn btn-outline-primary mt-auto">다운로드</a>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="report-card">
+                        <i class="bi bi-file-earmark-text-fill card-icon"></i>
+                        <h5>2022년 지속가능경영 보고서</h5>
+                        <p>ESG 경영의 기반을 다지고 초기 성과를 공유합니다.</p>
+                        <a href="#" class="btn btn-outline-primary mt-auto">다운로드</a>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="report-card">
+                        <i class="bi bi-file-earmark-pdf-fill card-icon"></i>
+                        <h5>ESG 경영 정책</h5>
+                        <p>우리의 ESG 경영 원칙과 목표를 명확히 합니다.</p>
+                        <a href="#" class="btn btn-outline-primary mt-auto">보기</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- News Section -->
+    <section id="news" class="section bg-light-custom">
+        <div class="container">
+            <h2 class="section-heading">최신 ESG 소식</h2>
+            <p class="section-subheading">우리의 ESG 활동과 관련된 최신 정보를 확인하세요.</p>
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <img src="https://via.placeholder.com/500x300/87CEEB/FFFFFF?text=News+1" class="card-img-top" alt="ESG 뉴스 1">
+                        <div class="card-body">
+                            <h5 class="card-title">[기업명], 친환경 에너지 전환 목표 달성</h5>
+                            <p class="card-text">2024년까지 재생 에너지 사용률 50% 달성이라는 목표를 조기 달성했습니다...</p>
+                            <a href="#" class="btn btn-outline-secondary">더 보기</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <img src="https://via.placeholder.com/500x300/90EE90/FFFFFF?text=News+2" class="card-img-top" alt="ESG 뉴스 2">
+                        <div class="card-body">
+                            <h5 class="card-title">지역사회 공헌 활동 확대</h5>
+                            <p class="card-text">임직원 봉사활동 참여율 증가 및 지역 아동센터 지원 확대 소식입니다...</p>
+                            <a href="#" class="btn btn-outline-secondary">더 보기</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Us Section -->
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 class="section-heading">ESG 관련 문의</h2>
+            <p class="section-subheading">지속가능한 미래를 위한 당신의 의견을 기다립니다.</p>
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <form>
+                        <div class="mb-4">
+                            <label for="name" class="form-label">이름</label>
+                            <input type="text" class="form-control" id="name" placeholder="이름을 입력하세요">
+                        </div>
+                        <div class="mb-4">
+                            <label for="email" class="form-label">이메일</label>
+                            <input type="email" class="form-control" id="email" placeholder="example@domain.com">
+                        </div>
+                        <div class="mb-4">
+                            <label for="message" class="form-label">문의 내용</label>
+                            <textarea class="form-control" id="message" rows="6" placeholder="문의 내용을 입력하세요"></textarea>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary">메시지 보내기</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="row justify-content-center mt-5">
+                <div class="col-md-8 text-center">
+                    <p class="mb-2"><strong>주소:</strong> 서울시 강남구 테헤란로 123, ESG 빌딩</p>
+                    <p class="mb-2"><strong>전화:</strong> 02-9876-5432</p>
+                    <p class="mb-2"><strong>이메일:</strong> <a href="mailto:esg@company.com">esg@company.com</a></p>
+                </div>
+            </div>
+            <div class="row justify-content-center mt-4">
+                <div class="col-md-8 map-container">
+                    <!-- Placeholder for Google Maps -->
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3164.287011799999!2d127.0377441157907!3d37.50793007979477!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x307776293311233b%3A0x1234567890abcdef!5e0!3m2!1sen!2sus!4v1678886400000!5m2!1sen!2sus" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h5 class="footer-heading">[기업명] ESG</h5>
+                    <p class="footer-text">지속가능한 미래를 위한 우리의 노력과 약속.</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5 class="footer-heading">주요 메뉴</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#home">홈</a></li>
+                        <li><a href="#commitment">ESG 약속</a></li>
+                        <li><a href="#pillars">ESG 활동</a></li>
+                        <li><a href="#reports">보고서</a></li>
+                        <li><a href="#news">뉴스</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5 class="footer-heading">연락처</h5>
+                    <p class="footer-text">이메일: <a href="mailto:esg@company.com">esg@company.com</a></p>
+                    <p class="footer-text">전화: 02-9876-5432</p>
+                    <p class="footer-text">주소: 서울시 강남구 테헤란로 123, ESG 빌딩</p>
+                </div>
+            </div>
+            <hr class="footer-divider">
+            <p class="text-center">&copy; 2025 [기업명]. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS Bundle (includes Popper) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <!-- Bootstrap Icons (for pillar icons) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+</body>
+</html>

@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>마음숨 요가 스튜디오</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- Custom CSS -->
+    <style>
+        /* General styles inspired by space737.kr */
+        body {
+            font-family: 'Noto Sans KR', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Clean, modern Korean font */
+            line-height: 1.7;
+            color: #333; /* Dark grey for text */
+            background-color: #f8f9fa; /* Light, natural background */
+        }
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.95) !important; /* Slightly transparent white/off-white, sticky */
+            box-shadow: 0 2px 5px rgba(0,0,0,.1);
+            padding: 0.8rem 0;
+        }
+        .navbar .navbar-brand {
+            font-weight: 700;
+            color: #2E8B57 !important; /* SeaGreen accent */
+            font-size: 1.8rem;
+        }
+        .navbar .nav-link {
+            color: #555 !important; /* Darker text for nav links */
+            padding: 0.5rem 1.2rem;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+        }
+        .navbar .nav-link:hover {
+            color: #2E8B57 !important; /* SeaGreen accent on hover */
+        }
+        .navbar .nav-link.active {
+            font-weight: 500;
+            color: #2E8B57 !important;
+        }
+
+        /* Hero Section - Calming, full-width image */
+        .hero-section {
+            background-image: url('https://via.placeholder.com/1920x1080/98FB98/FFFFFF?text=Mindful+Yoga+Flow'); /* Placeholder calming image */
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            color: white;
+            padding: 180px 0; /* Generous vertical padding */
+            text-align: center;
+            margin-bottom: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .hero-section::before { /* Overlay for better text readability */
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.4); /* Dark overlay */
+            z-index: 1;
+        }
+        .hero-section .container {
+            position: relative;
+            z-index: 2;
+        }
+        .hero-section h1 {
+            font-size: 3.8rem; /* Larger hero title */
+            font-weight: 700;
+            margin-bottom: 25px;
+            line-height: 1.2;
+            letter-spacing: -1px;
+        }
+        .hero-section .lead {
+            font-size: 1.5rem;
+            margin-bottom: 40px;
+            opacity: 0.95;
+        }
+        .hero-section .btn-primary {
+            background-color: #2E8B57; /* SeaGreen */
+            border-color: #2E8B57;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border-radius: 30px; /* Rounded button */
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+        .hero-section .btn-primary:hover {
+            background-color: #228B22; /* ForestGreen */
+            border-color: #228B22;
+        }
+
+        /* Section Styling - clean, ample spacing */
+        .section {
+            padding: 80px 0; /* Increased padding for sections */
+            position: relative;
+        }
+        .section-heading {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 40px;
+            text-align: center;
+            color: #333;
+        }
+        .section-subheading {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #6c757d;
+            margin-bottom: 60px;
+        }
+        .bg-light-custom { /* Customized light background for specific sections */
+            background-color: #f0f8ff !important; /* AliceBlue */
+        }
+
+        /* About/Studio Section - Image and text layout */
+        #about .content-block {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            margin-top: 40px;
+        }
+        #about .content-block img {
+            max-width: 45%;
+            border-radius: 15px; /* Rounded image corners */
+            box-shadow: 0 10px 25px rgba(0,0,0,.1);
+        }
+        #about .content-block .text-content {
+            flex: 1;
+        }
+        #about .text-content p {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+        #about .btn-outline-primary {
+            border-radius: 25px;
+            padding: 12px 25px;
+            font-weight: 500;
+            border-width: 2px;
+        }
+        @media (max-width: 768px) { /* Responsive adjustments */
+            #about .content-block {
+                flex-direction: column;
+                gap: 30px;
+            }
+            #about .content-block img {
+                max-width: 100%;
+                margin-bottom: 20px;
+            }
+            .hero-section h1 { font-size: 2.8rem; }
+            .hero-section .lead { font-size: 1.2rem; }
+            .section-heading { font-size: 2.2rem; }
+        }
+
+        /* Classes Section - Card styling */
+        #classes .card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0,0,0,.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow: hidden; /* Ensure content stays within rounded corners */
+        }
+        #classes .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0,0,0,.15);
+        }
+        #classes .card-img-top {
+            height: 220px; /* Fixed image height */
+            object-fit: cover; /* Ensure image covers the area */
+        }
+        #classes .card-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #2E8B57; /* SeaGreen */
+        }
+        #classes .card-text {
+            font-size: 1rem;
+            color: #555;
+            margin-bottom: 25px;
+        }
+        #classes .card-body {
+            padding: 30px;
+        }
+        #classes .btn-outline-primary {
+            border-radius: 25px;
+            padding: 10px 20px;
+            font-weight: 500;
+            border-width: 2px;
+        }
+
+        /* Schedule Section - Table styling */
+        #schedule table {
+            border-radius: 15px;
+            overflow: hidden; /* To make border-radius work on table */
+            box-shadow: 0 8px 20px rgba(0,0,0,.1);
+        }
+        #schedule th, #schedule td {
+            padding: 15px 20px;
+            vertical-align: middle;
+            text-align: center;
+        }
+        #schedule th {
+            background-color: #2E8B57; /* SeaGreen header */
+            color: white;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        #schedule td {
+            background-color: #f0f8ff; /* AliceBlue for rows */
+            font-size: 1rem;
+            color: #333;
+        }
+        #schedule tr:nth-child(even) td {
+            background-color: #ffffff; /* White for even rows */
+        }
+        #schedule .time-slot {
+            font-weight: 500;
+            color: #555;
+        }
+        #schedule .class-name {
+            font-weight: 600;
+            color: #2E8B57; /* SeaGreen for class names */
+        }
+        #schedule .instructor-name {
+            font-style: italic;
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+
+        /* Instructors Section - Card styling */
+        #instructors .card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0,0,0,.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+            padding: 30px 20px;
+            background-color: #ffffff;
+        }
+        #instructors .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0,0,0,.15);
+        }
+        #instructors .card-img-top {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%; /* Circular image */
+            object-fit: cover;
+            margin: 0 auto 20px auto;
+            border: 4px solid #2E8B57; /* SeaGreen border */
+        }
+        #instructors .card-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: #333;
+        }
+        #instructors .card-text {
+            font-size: 0.95rem;
+            color: #6c757d;
+            font-style: italic;
+        }
+
+        /* Contact Us Section - Form styling */
+        #contact form label.form-label {
+            font-weight: 500;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        #contact input.form-control,
+        #contact textarea.form-control {
+            border-radius: 10px;
+            padding: 15px;
+            border: 1px solid #d0e0d0; /* Light green border */
+            background-color: #ffffff;
+        }
+        #contact input.form-control:focus,
+        #contact textarea.form-control:focus {
+            border-color: #2E8B57; /* SeaGreen focus */
+            box-shadow: 0 0 0 0.25rem rgba(46, 139, 87, .25); /* SeaGreen shadow */
+        }
+        #contact .btn-primary {
+            background-color: #2E8B57; /* SeaGreen */
+            border-color: #2E8B57;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            border-radius: 30px;
+            font-weight: 600;
+        }
+         #contact .btn-primary:hover {
+            background-color: #228B22; /* ForestGreen */
+            border-color: #228B22;
+        }
+        #contact .map-container {
+            margin-top: 40px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0,0,0,.1);
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #2E8B57; /* SeaGreen footer */
+            color: #e0f0e0; /* Light green text */
+            padding: 60px 0;
+            margin-top: 80px;
+            font-size: 0.95rem;
+        }
+        .footer h5 {
+            color: white;
+            font-weight: 700;
+            margin-bottom: 25px;
+            font-size: 1.4rem;
+        }
+        .footer p, .footer li {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+        .footer a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .footer a:hover {
+            color: #90EE90; /* LightGreen on hover */
+        }
+        .footer-divider {
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+            margin: 40px 0;
+        }
+        .footer-text {
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#home">마음숨 요가</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#home">홈</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">스튜디오</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#classes">클래스</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#schedule">시간표</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#instructors">강사진</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">문의</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="container">
+            <h1>몸과 마음의 균형을 찾는 공간</h1>
+            <p class="lead">마음숨 요가에서 당신의 일상에 평온과 활력을 더하세요.</p>
+            <a href="#schedule" class="btn btn-primary">오늘의 시간표 보기</a>
+        </div>
+    </section>
+
+    <!-- About Us / Studio Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-heading">마음숨 요가 스튜디오</h2>
+            <p class="section-subheading">당신의 몸과 마음이 편안히 숨 쉴 수 있는 공간</p>
+            <div class="content-block">
+                <img src="https://via.placeholder.com/500x500/98FB98/FFFFFF?text=Studio+Space" alt="마음숨 요가 스튜디오 공간">
+                <div class="text-content">
+                    <p>마음숨 요가는 단순한 운동 공간을 넘어, 바쁜 현대 생활 속에서 잠시 멈춰 자신을 돌아보고 내면의 평화를 찾을 수 있는 안식처입니다. 저희는 전문적이고 체계적인 요가 수련을 통해 몸과 마음의 건강한 균형을 되찾도록 돕습니다.</p>
+                    <p>자연 채광이 가득한 아늑한 공간에서 숙련된 강사진과 함께 당신의 몸과 마음에 새로운 에너지를 불어넣으세요. 모든 레벨의 수련자를 환영합니다.</p>
+                    <a href="#" class="btn btn-outline-primary">스튜디오 둘러보기</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Classes Section -->
+    <section id="classes" class="section bg-light-custom">
+        <div class="container">
+            <h2 class="section-heading">다양한 요가 클래스</h2>
+            <p class="section-subheading">당신의 몸과 마음에 맞는 클래스를 찾아보세요.</p>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="https://via.placeholder.com/400x250/87CEEB/FFFFFF?text=Vinyasa+Flow" class="card-img-top" alt="빈야사 플로우">
+                        <div class="card-body">
+                            <h5 class="card-title">빈야사 플로우</h5>
+                            <p class="card-text">역동적인 움직임과 호흡을 통해 몸의 에너지를 깨우는 클래스입니다.</p>
+                            <a href="#" class="btn btn-outline-primary">자세히 보기</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="https://via.placeholder.com/400x250/90EE90/FFFFFF?text=Hatha+Yoga" class="card-img-top" alt="하타 요가">
+                        <div class="card-body">
+                            <h5 class="card-title">하타 요가</h5>
+                            <p class="card-text">기본적인 아사나(자세)를 천천히 깊이 탐구하며 몸의 정렬을 바로잡습니다.</p>
+                            <a href="#" class="btn btn-outline-primary">자세히 보기</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="https://via.placeholder.com/400x250/FFB6C1/FFFFFF?text=Meditation" class="card-img-top" alt="명상">
+                        <div class="card-body">
+                            <h5 class="card-title">마음챙김 명상</h5>
+                            <p class="card-text">고요함 속에서 내면을 탐색하고 스트레스를 해소하는 명상 시간입니다.</p>
+                            <a href="#" class="btn btn-outline-primary">자세히 보기</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Schedule Section -->
+    <section id="schedule" class="section">
+        <div class="container">
+            <h2 class="section-heading">주간 요가 시간표</h2>
+            <p class="section-subheading">당신의 수련 시간을 계획해보세요.</p>
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>시간</th>
+                            <th>월</th>
+                            <th>화</th>
+                            <th>수</th>
+                            <th>목</th>
+                            <th>금</th>
+                            <th>토</th>
+                            <th>일</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="time-slot">07:00 - 08:00</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td class="class-name">빈야사 플로우<br><span class="instructor-name">강사 A</span></td>
+                            <td>-</td>
+                            <td class="class-name">하타 요가<br><span class="instructor-name">강사 B</span></td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td class="time-slot">09:00 - 10:00</td>
+                            <td class="class-name">아쉬탕가<br><span class="instructor-name">강사 C</span></td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td class="class-name">빈야사 플로우<br><span class="instructor-name">강사 A</span></td>
+                            <td>-</td>
+                            <td class="class-name">하타 요가<br><span class="instructor-name">강사 B</span></td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td class="time-slot">11:00 - 12:00</td>
+                            <td>-</td>
+                            <td class="class-name">명상<br><span class="instructor-name">강사 D</span></td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td class="time-slot">19:00 - 20:00</td>
+                            <td class="class-name">하타 요가<br><span class="instructor-name">강사 B</span></td>
+                            <td class="class-name">빈야사 플로우<br><span class="instructor-name">강사 A</span></td>
+                            <td>-</td>
+                            <td class="class-name">아쉬탕가<br><span class="instructor-name">강사 C</span></td>
+                            <td>-</td>
+                            <td class="class-name">명상<br><span class="instructor-name">강사 D</span></td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td class="time-slot">20:30 - 21:30</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td class="class-name">빈야사 플로우<br><span class="instructor-name">강사 A</span></td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Instructors Section -->
+    <section id="instructors" class="section bg-light-custom">
+        <div class="container">
+            <h2 class="section-heading">전문 강사진</h2>
+            <p class="section-subheading">당신의 성장을 이끌어줄 따뜻한 전문가들</p>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="https://via.placeholder.com/150/ADD8E6/FFFFFF?text=Instructor+A" class="card-img-top" alt="강사 A">
+                        <div class="card-body">
+                            <h5 class="card-title">강사 A</h5>
+                            <p class="card-text">빈야사 & 파워 요가 전문가</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="https://via.placeholder.com/150/90EE90/FFFFFF?text=Instructor+B" class="card-img-top" alt="강사 B">
+                        <div class="card-body">
+                            <h5 class="card-title">강사 B</h5>
+                            <p class="card-text">하타 & 힐링 요가 마스터</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="https://via.placeholder.com/150/FFB6C1/FFFFFF?text=Instructor+C" class="card-img-top" alt="강사 C">
+                        <div class="card-body">
+                            <h5 class="card-title">강사 C</h5>
+                            <p class="card-text">아쉬탕가 & 빈야사 전문 강사</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Us Section -->
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 class="section-heading">문의하기</h2>
+            <p class="section-subheading">궁금한 점이 있으시면 언제든지 연락주세요.</p>
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <form>
+                        <div class="mb-4">
+                            <label for="name" class="form-label">이름</label>
+                            <input type="text" class="form-control" id="name" placeholder="이름을 입력하세요">
+                        </div>
+                        <div class="mb-4">
+                            <label for="email" class="form-label">이메일</label>
+                            <input type="email" class="form-control" id="email" placeholder="example@domain.com">
+                        </div>
+                        <div class="mb-4">
+                            <label for="message" class="form-label">메시지</label>
+                            <textarea class="form-control" id="message" rows="6" placeholder="문의 내용을 입력하세요"></textarea>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary">메시지 보내기</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="row justify-content-center mt-5">
+                <div class="col-md-8 text-center">
+                    <p class="mb-2"><strong>주소:</strong> 서울시 강남구 테헤란로 123, 4층</p>
+                    <p class="mb-2"><strong>전화:</strong> 02-1234-5678</p>
+                    <p class="mb-2"><strong>이메일:</strong> <a href="mailto:hello@mindbreathyoga.com">hello@mindbreathyoga.com</a></p>
+                    <p class="mb-2"><strong>운영 시간:</strong> 평일 07:00 - 21:30 / 주말 09:00 - 18:00</p>
+                </div>
+            </div>
+            <div class="row justify-content-center mt-4">
+                <div class="col-md-8 map-container">
+                    <!-- Placeholder for Google Maps -->
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3164.287011799999!2d127.0377441157907!3d37.50793007979477!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x307776293311233b%3A0x1234567890abcdef!5e0!3m2!1sen!2sus!4v1678886400000!5m2!1sen!2sus" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h5 class="footer-heading">마음숨 요가</h5>
+                    <p class="footer-text">몸과 마음의 건강한 균형을 위한 당신의 여정에 함께합니다.</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5 class="footer-heading">주요 메뉴</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#home">홈</a></li>
+                        <li><a href="#about">스튜디오</a></li>
+                        <li><a href="#classes">클래스</a></li>
+                        <li><a href="#schedule">시간표</a></li>
+                        <li><a href="#instructors">강사진</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5 class="footer-heading">연락처</h5>
+                    <p class="footer-text">이메일: <a href="mailto:hello@mindbreathyoga.com">hello@mindbreathyoga.com</a></p>
+                    <p class="footer-text">전화: 02-1234-5678</p>
+                    <p class="footer-text">주소: 서울시 강남구 테헤란로 123, 4층</p>
+                </div>
+            </div>
+            <hr class="footer-divider">
+            <p class="text-center">&copy; 2025 마음숨 요가. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS Bundle (includes Popper) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+</html>
+<!-- Initial HTML structure for a yoga website using Bootstrap 5, inspired by space737.kr. -->
+<!-- Includes a sticky navbar, a hero section with a placeholder image and CTA, -->
+<!-- sections for About, Classes, Schedule, Instructors, and Contact, -->
+<!-- and a footer. Custom CSS is included to refine the design with a calming color palette, -->
+<!-- modern typography, and appropriate spacing, mimicking the aesthetic of the reference site. -->
+<!-- Placeholder images and content are used for demonstration. -->
+<!-- The schedule uses a table, instructors use cards with circular images, -->
+<!-- and the contact section includes a form and a map placeholder. -->
