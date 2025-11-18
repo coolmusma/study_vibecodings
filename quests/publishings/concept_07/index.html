@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Mark v2 - 혼밥 레시피</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <a class="logo" href="index.html">Food Mark</a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html" class="active">홈</a></li>
+                    <li><a href="recipes.html">레시피</a></li>
+                    <li><a href="ingredients.html">식재료</a></li>
+                </ul>
+            </nav>
+            <form class="search-form">
+                <input type="search" placeholder="레시피 검색">
+                <button type="submit">검색</button>
+            </form>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-image-container">
+                <img src="https://placehold.co/1920x1080/D32F2F/FFFFFF?text=Delicious+Solo+Meals" alt="맛있는 혼밥">
+            </div>
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    <span>혼밥족을 위한</span>
+                    <span>간편 레시피</span>
+                </h1>
+                <p class="hero-subtitle">혼자서도 맛있고 건강하게!</p>
+            </div>
+        </section>
+
+        <section class="popular-recipes container">
+            <h2 class="section-title">인기 레시피</h2>
+            <div class="recipe-list">
+                <div class="recipe-item animate-on-scroll">
+                    <div class="recipe-image">
+                        <img src="https://placehold.co/500x700/EFEFEF/333333?text=Kimchi+Jjigae" alt="김치찌개">
+                    </div>
+                    <div class="recipe-content">
+                        <span class="recipe-number">01</span>
+                        <h3 class="recipe-title">돼지고기 김치찌개</h3>
+                        <p class="recipe-description">한국인의 소울푸드, 김치찌개를 15분 만에 만드는 비법!</p>
+                        <a href="recipe-detail.html" class="btn">레시피 보기</a>
+                    </div>
+                </div>
+                <div class="recipe-item animate-on-scroll">
+                    <div class="recipe-image">
+                        <img src="https://placehold.co/500x700/EFEFEF/333333?text=Ganjang+Gyeranbap" alt="간장계란밥">
+                    </div>
+                    <div class="recipe-content">
+                        <span class="recipe-number">02</span>
+                        <h3 class="recipe-title">간장 계란밥</h3>
+                        <p class="recipe-description">자취생 필수 요리! 5분이면 완성되는 마약 간장 계란밥.</p>
+                        <a href="recipe-detail.html" class="btn">레시피 보기</a>
+                    </div>
+                </div>
+                <div class="recipe-item animate-on-scroll">
+                    <div class="recipe-image">
+                        <img src="https://placehold.co/500x700/EFEFEF/333333?text=Alio+Olio" alt="알리오올리오">
+                    </div>
+                    <div class="recipe-content">
+                        <span class="recipe-number">03</span>
+                        <h3 class="recipe-title">알리오 올리오</h3>
+                        <p class="recipe-description">냉장고 속 재료로 뚝딱! 레스토랑 부럽지 않은 알리오 올리오.</p>
+                        <a href="recipe-detail.html" class="btn">레시피 보기</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>© 2025 Food Mark. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
